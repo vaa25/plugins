@@ -1,0 +1,45 @@
+plugins {
+    id 'org.springframework.boot'
+    id 'io.spring.dependency-management'
+    id 'java'
+}
+
+bootJar{
+    enabled = true
+}
+
+jar{
+    enabled = false
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+bootJar {
+//    manifest {
+//        attributes 'Main-Class': 'com.ClassesFirstJarLauncher'
+//    }
+    with copySpec {
+        from "$buildDir/classes/java/main/com/AnotherJarLauncher.class"
+        into 'com'
+    }
+}
+
+dependencies {
+    implementation project(':interface')
+//    implementation project(':plugin2')
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-loader'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
