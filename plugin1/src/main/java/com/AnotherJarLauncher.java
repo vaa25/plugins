@@ -11,11 +11,6 @@ import org.springframework.boot.loader.archive.JarFileArchive;
 public class AnotherJarLauncher extends JarLauncher {
 
     @Override
-    protected boolean isPostProcessingClassPathArchives() {
-        return true;
-    }
-
-    @Override
     protected void postProcessClassPathArchives(List<Archive> archives) throws MalformedURLException {
         try {
             archives.add(new JarFileArchive(new File("/home/vaa25/IdeaProjects/plugins/plugin2/build/libs/plugin2-0.0.1-SNAPSHOT.jar")));

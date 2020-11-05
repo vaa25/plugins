@@ -1,5 +1,5 @@
 rootProject.name = 'plugins'
+include 'interface'
 include 'plugin1'
 include 'plugin2'
-include 'interface'
 
